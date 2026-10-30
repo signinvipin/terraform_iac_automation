@@ -16,13 +16,13 @@ $ az devops ?
 Get role assignment address id for import purpose having GUID 0a47c68d-f68e-820f-acdd-dd3054f0b96e
 $ az role assignment list --all --query "[?contains(id, '0a47c68d')].id" -o tsv
 we get, 
-/subscriptions/2b2f02f7-dde2-47db-974c-47d2182721ae/resourceGroups/myTFResourceGroup/providers
+/subscriptions/2b2f02f7-dde2-xxxx-974c-47d2182721ae/resourceGroups/myTFResourceGroup/providers
 /Microsoft.Storage/storageAccounts/prodmyappsacmk01/blobServices/default/containers/mytfstate
 /providers/Microsoft.Authorization/roleAssignments/0a47c68d-f68e-820f-acdd-dd3054f0b96e
 
 then we import, 
 $ terraform import azurerm_role_assignment.terraform_backend_storage_access /subscriptions
-/2b2f02f7-dde2-47db-974c-47d2182721ae/resourceGroups/myTFResourceGroup/providers/Microsoft.Storage
+/2b2f02f7-dde2-xxxx-974c-47d2182721ae/resourceGroups/myTFResourceGroup/providers/Microsoft.Storage
 /storageAccounts/prodmyappsacmk01/blobServices/default/containers/mytfstate/providers/Microsoft.Authorization
 /roleAssignments/0a47c68d-f68e-820f-acdd-dd3054f0b96e
 ---
@@ -31,7 +31,7 @@ Role Assignment:
 $ az role assignment create \
   --role "Key Vault Crypto Officer" \
   --assignee usrlsothdevops@gmail.com \
-  --scope /subscriptions/2b2f02f7-dde2-47db-974c-47d2182721ae/resourceGroups/myTFResourceGroup/providers/Microsoft.KeyVault/vaults/prodmyappkv
+  --scope /subscriptions/2b2f02f7-dde2-xxxx-974c-47d2182721ae/resourceGroups/myTFResourceGroup/providers/Microsoft.KeyVault/vaults/prodmyappkv
 
 Rotate github token value
 az keyvault secret set \
@@ -191,7 +191,7 @@ az graph query
 Delete Resources 
 
 1) Delete directly (simplest) - when we know the resource
-az resource delete --ids "/subscriptions/2b2f02f7-dde2-47db-974c-47d2182721ae/\
+az resource delete --ids "/subscriptions/2b2f02f7-dde2-xxxx-974c-47d2182721ae/\
 resourceGroups/myTFResourceGroup/\
 providers/Microsoft.Storage/storageAccounts/testdeny1234"
 

@@ -425,9 +425,9 @@ $ terraform init -upgrade
 
 #Import all existing resources into state
 - Import Resource Group
-$ terraform import azurerm_resource_group.prodmyapp /subscriptions/2b2f02f7-dde2-47db-974c-47d2182721ae/resourceGroups/myTFResourceGroup
+$ terraform import azurerm_resource_group.prodmyapp /subscriptions/2b2f02f7-dde2-xxxx-974c-47d2182721ae/resourceGroups/myTFResourceGroup
 - Import Storage Account  
-$ terraform import azurerm_storage_account.prodmyapp /subscriptions/2b2f02f7-dde2-47db-974c-47d2182721ae/resourceGroups/myTFResourceGroup/providers/Microsoft.Storage/storageAccounts/prodmyapptfstate01
+$ terraform import azurerm_storage_account.prodmyapp /subscriptions/2b2f02f7-dde2-xxxx-974c-47d2182721ae/resourceGroups/myTFResourceGroup/providers/Microsoft.Storage/storageAccounts/prodmyapptfstate01
 - Import Storage Container
 $ terraform import azurerm_storage_container.prodmyapp https://prodmyapptfstate01.blob.core.windows.net/mytfstate
 
@@ -725,7 +725,7 @@ Method 1 - (Recommended) Manual assignment of role (to enable permissions to vie
 $ az role assignment create \
   --role "Key Vault Crypto Officer" \
   --assignee usrlsothdevops@gmail.com \
-  --scope /subscriptions/2b2f02f7-dde2-47db-974c-47d2182721ae/resourceGroups/myTFResourceGroup/providers/Microsoft.KeyVault/vaults/prodmyappkv
+  --scope /subscriptions/2b2f02f7-dde2-xxxx-974c-47d2182721ae/resourceGroups/myTFResourceGroup/providers/Microsoft.KeyVault/vaults/prodmyappkv
 
 # Industry best practice
 # After doing this Required Microsoft Graph permission `Directory.Read.All` will not be required.
@@ -3236,7 +3236,7 @@ $ terraform import azurerm_role_assignment.terraform_backend_storage_access \
 /subscriptions/<SUBSCRIPTION_ID>/providers/Microsoft.Authorization/roleAssignments/<ROLE_ASSIGNMENT_ID>
   
 $ terraform import azurerm_role_assignment.terraform_backend_storage_access\
-/subscriptions/2b2f02f7-dde2-47db-974c-47d2182721ae/providers/Microsoft.Authorization\
+/subscriptions/2b2f02f7-dde2-xxxx-974c-47d2182721ae/providers/Microsoft.Authorization\
 /roleAssignments/0a47c68df68e820facdddd3054f0b96e
 ---------------------------------------------------------------------------------------------------------------
 Reason to Implement Setup When WSL: 
