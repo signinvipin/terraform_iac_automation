@@ -66,7 +66,7 @@ LOG_FILE="${LOG_ROOT}/terraform-${COMMAND}.log"
 
 RESOURCE_CACHE_FILE="${RESOURCE_CACHE_FILE:-/tmp/resource_cache.json}"
 
-#REPO="signinvipin/terraform_automation_iac"
+#REPO="signinvipin/terraform-iac-automation"
 # GitHub repository where logs will be pushed
 
 # Tag filters (must match Terraform exactly)

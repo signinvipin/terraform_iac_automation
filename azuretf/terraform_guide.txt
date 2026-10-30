@@ -467,7 +467,7 @@ Terraform plan FAILED
 
 ```
 Go to location/directory where terraform files are stored 
-like `/home/cloud-user/terraform_automation_iac/azuretf/simpletf` and 
+like `/home/cloud-user/terraform-iac-automation/azuretf/simpletf` and 
 run bash cmd,
 $ terraform force-unlock 7d0f5123-6d43-3eac-6acb-352879a60005
 
@@ -944,7 +944,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: 'azuretf/simpletf' # since files in terraform_automation_IaC/azuretf/simpletf/
+        workingDirectory: 'azuretf/simpletf' # since files in terraform-iac-automation/azuretf/simpletf/
         backendServiceArm: '$(serviceConnection)'
         backendAzureRmResourceGroupName: 'myTFResourceGroup'
         backendAzureRmStorageAccountName: 'prodmyapptfstate01'
@@ -956,7 +956,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
-        workingDirectory: 'azuretf/simpletf'   # since files in terraform_automation_IaC/azuretf/simpletf/
+        workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
         environmentServiceNameAzureRM: '$(serviceConnection)'
         commandOptions: '-detailed-exitcode -var="arm_client_secret=$(ARM_CLIENT_SECRET)"'  # Optional: pass secrets
 
@@ -964,7 +964,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'apply'
-        workingDirectory: 'azuretf/simpletf'   # since files in terraform_automation_IaC/azuretf/simpletf/
+        workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
         environmentServiceNameAzureRM: '$(serviceConnection)'
         commandOptions: '-auto-approve'
 --------------------------------------------------------------------------------------------------------------
@@ -7083,7 +7083,7 @@ PIPELINE CODE:
 #      inputs:
 #        provider: 'azurerm'
 #        command: 'init'
-#        workingDirectory: 'azuretf/simpletf' # since files in terraform_automation_IaC/azuretf/simpletf/
+#        workingDirectory: 'azuretf/simpletf' # since files in terraform-iac-automation/azuretf/simpletf/
 #        backendServiceArm: '$(serviceConnection)'
 #        backendAzureRmResourceGroupName: 'myTFResourceGroup'
 #        backendAzureRmStorageAccountName: 'prodmyapptfstate01'
@@ -7097,7 +7097,7 @@ PIPELINE CODE:
 #      inputs:
 #        provider: 'azurerm'
 #        command: 'plan'
-#        workingDirectory: 'azuretf/simpletf'   # since files in terraform_automation_IaC/azuretf/simpletf/
+#        workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
 #        environmentServiceNameAzureRM: '$(serviceConnection)'
 #        commandOptions: >
 #          -no-color                                           
@@ -7110,7 +7110,7 @@ PIPELINE CODE:
 #      inputs:
 #        provider: 'azurerm'
 #        command: 'apply'
-#        workingDirectory: 'azuretf/simpletf'   # since files in terraform_automation_IaC/azuretf/simpletf/
+#        workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
 #        environmentServiceNameAzureRM: '$(serviceConnection)'
 #        commandOptions: >
 #          -no-color
@@ -7133,7 +7133,7 @@ PIPELINE CODE:
 #      inputs:
 #        provider: 'azurerm'
 #        command: 'init'
-#        workingDirectory: 'azuretf/simpletf' # since files in terraform_automation_IaC/azuretf/simpletf/
+#        workingDirectory: 'azuretf/simpletf' # since files in terraform-iac-automation/azuretf/simpletf/
 #        backendServiceArm: '$(serviceConnection)'
 #        backendAzureRmResourceGroupName: 'myTFResourceGroup'
 #        backendAzureRmStorageAccountName: 'prodmyapptfstate01'
@@ -7145,7 +7145,7 @@ PIPELINE CODE:
 #      inputs:
 #        provider: 'azurerm'
 #        command: 'plan'
-#        workingDirectory: 'azuretf/simpletf'   # since files in terraform_automation_IaC/azuretf/simpletf/
+#        workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
 #        environmentServiceNameAzureRM: '$(serviceConnection)'
 #        commandOptions: '-out=tfplan'
         
@@ -7233,7 +7233,7 @@ PIPELINE CODE:
 #            inputs:
 #              provider: 'azurerm'
 #              command: 'init'
-#              workingDirectory: 'azuretf/simpletf'  # since files in terraform_automation_IaC/azuretf/simpletf/
+#              workingDirectory: 'azuretf/simpletf'  # since files in terraform-iac-automation/azuretf/simpletf/
 #              backendServiceArm: '$(serviceConnection)'
 #              backendAzureRmResourceGroupName: 'myTFResourceGroup'
 #              backendAzureRmStorageAccountName: 'prodmyapptfstate01'
@@ -7245,7 +7245,7 @@ PIPELINE CODE:
 #            inputs:
 #              provider: 'azurerm'
 #              command: 'apply'
-#              workingDirectory: 'azuretf/simpletf'   # since files in terraform_automation_IaC/azuretf/simpletf/
+#              workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
 #              environmentServiceNameAzureRM: '$(serviceConnection)'
 #              commandOptions: 'tfplan'
 ---------------------------------------------------------------------------------------------------------------
