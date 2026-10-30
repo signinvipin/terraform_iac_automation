@@ -14,6 +14,8 @@ Infrastructure as code with Terraform: automated Azure resource provisioning, ru
 - Linux and Windows VMs with disk encryption
 
 ## Structure
+
+```text
 azuretf/
 ├── simpletf/
 │   ├── main.tf               # providers, resources, variables, outputs (v1, single file)
@@ -24,6 +26,7 @@ azuretf/
 │   └── pushlogs.sh           # pushes run logs to the terraform-logs branch
 ├── azure_cli_guide.txt       # Azure CLI notes
 └── terraform_guide.txt       # setup and troubleshooting notes
+```
 
 ## Pipeline
 - Runs on a self-hosted agent (on an EC2 instance)
@@ -31,11 +34,14 @@ azuretf/
 - Terraform init → plan → apply, with logs saved per run
 
 ## Usage
+
+```bash
 cd azuretf/simpletf
 export ARM_SUBSCRIPTION_ID="<your-subscription-id>"
 terraform init
 terraform plan
 terraform apply
+```
 
 ## Notes
 - Subscription IDs and secrets in the notes are masked
