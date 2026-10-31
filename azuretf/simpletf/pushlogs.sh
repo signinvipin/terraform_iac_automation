@@ -7,7 +7,7 @@ echo "Pushing all Terraform logs in one commit..."
 : "${GITHUB_TOKEN:?Missing GITHUB_TOKEN}"
 : "${BUILD_SOURCESDIRECTORY:?Missing BUILD_SOURCESDIRECTORY}"
 
-REPO="signinvipin/terraform-iac-automation"
+REPO="signinvipin/terraform_iac_automation"
 
 COMMIT_SHA=$(git -C "$BUILD_SOURCESDIRECTORY" rev-parse HEAD)
 
