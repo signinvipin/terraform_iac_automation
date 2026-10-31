@@ -1,4 +1,4 @@
-# terraform-iac-automation
+# terraform_iac_automation
 
 Infrastructure as code with Terraform: automated Azure resource provisioning, run through an Azure DevOps pipeline. This is a lab/learning project, currently being restructured into modules.
 
