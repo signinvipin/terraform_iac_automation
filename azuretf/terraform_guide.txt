@@ -3252,10 +3252,10 @@ vips_devops@D-VoS:~$ mkdir -p ~/.ssh
 vips_devops@D-VoS:~$ cp /mnt/d/DevOps_Practice/bash_here/authUSeast2.pem ~/.ssh/
 vips_devops@D-VoS:~$ chmod 600 ~/.ssh/authUSeast2.pem
 vips_devops@D-VoS:~$ chmod 700 ~/.ssh
-vips_devops@D-VoS:~$ ssh -i ~/.ssh/authUSeast2.pem cloud-user@18.222.251.226
+vips_devops@D-VoS:~$ ssh -i ~/.ssh/authUSeast2.pem cloud-user@18.222.251.xxx
 Activate the web console with: systemctl enable --now cockpit.socket
 
-Last login: Tue Apr 28 11:37:19 2026 from 171.76.85.120
+Last login: Tue Apr 28 11:37:19 2026 from 171.76.xx.120
 [cloud-user@ip-172-31-34-84 ~]$
 ---------------------------------------------------------------------------------------------------------------
 Secure your Terraform backend properly:
@@ -3446,7 +3446,7 @@ data "azurerm_key_vault_secret" "win_password" {
 */
 
 > Inside windows VM resource block,
-#admin_password      = "Adminuser@1234!" 
+#admin_password      = "xxxx" 
 #AVOID hardcoding secrets, instead use variable injection to env and/or use data block
 #admin_password = data.azurerm_key_vault_secret.win_password.value
 #Plan to move toward Azure AD login (passwordless)
@@ -6736,7 +6736,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   size           = "Standard_B1s"
   admin_username = "azureuser"
 
-  admin_password = "Password1234!"
+  admin_password = "xxxx"
   disable_password_authentication = false
 
   network_interface_ids = [
