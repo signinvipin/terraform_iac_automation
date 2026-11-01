@@ -467,7 +467,7 @@ Terraform plan FAILED
 
 ```
 Go to location/directory where terraform files are stored 
-like `/home/cloud-user/terraform-iac-automation/azuretf/simpletf` and 
+like `/home/cloud-user/terraform-iac-automation/azuretf/monolithic_tf` and 
 run bash cmd,
 $ terraform force-unlock 7d0f5123-6d43-3eac-6acb-352879a60005
 
@@ -864,7 +864,7 @@ Add YAML Code under 'jobs:' as
             inputs:
               buildType: 'current'
               artifactName: 'tfplan'
-              targetPath: 'azuretf/simpletf/'
+              targetPath: 'azuretf/monolithic_tf/'
 
 
 Method 2: Manual Approval Check (No environments/dashboard usage needed)
@@ -919,7 +919,7 @@ Add YAML Code after stage plan as
       inputs:
         buildType: 'current'
         artifactName: 'tfplan'
-        targetPath: 'azuretf/simpletf/'
+        targetPath: 'azuretf/monolithic_tf/'
 
     # Add, format and use/continue locs with tasks for init and apply mentioned at end of file.
     
@@ -944,7 +944,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: 'azuretf/simpletf' # since files in terraform-iac-automation/azuretf/simpletf/
+        workingDirectory: 'azuretf/monolithic_tf' # since files in terraform-iac-automation/azuretf/monolithic_tf/
         backendServiceArm: '$(serviceConnection)'
         backendAzureRmResourceGroupName: 'myTFResourceGroup'
         backendAzureRmStorageAccountName: 'prodmyapptfstate01'
@@ -956,7 +956,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
-        workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
+        workingDirectory: 'azuretf/monolithic_tf'   # since files in terraform-iac-automation/azuretf/monolithic_tf/
         environmentServiceNameAzureRM: '$(serviceConnection)'
         commandOptions: '-detailed-exitcode -var="arm_client_secret=$(ARM_CLIENT_SECRET)"'  # Optional: pass secrets
 
@@ -964,7 +964,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'apply'
-        workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
+        workingDirectory: 'azuretf/monolithic_tf'   # since files in terraform-iac-automation/azuretf/monolithic_tf/
         environmentServiceNameAzureRM: '$(serviceConnection)'
         commandOptions: '-auto-approve'
 --------------------------------------------------------------------------------------------------------------
@@ -5549,7 +5549,7 @@ Author       : Microsoft Corporation
 Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/publish-pipeline-artifact
 ==============================================================================
 Artifact name input: terraform-logs
-Uploading pipeline artifact from /opt/agent/_work/1/s/azuretf/simpletf for build #110
+Uploading pipeline artifact from /opt/agent/_work/1/s/azuretf/monolithic_tf for build #110
 Using default max parallelism.
 Max dedup parallelism: 192
 DomainId: 0
@@ -5557,14 +5557,14 @@ ApplicationInsightsTelemetrySender will correlate events with X-TFS-Session ebc4
 Hashtype: Dedup1024K
 DedupManifestArtifactClient will correlate http requests with X-TFS-Session ebc40439-e747-4c22-9fcf-73c1eeba487c
 18 files processed.
-Processed 18 files from /opt/agent/_work/1/s/azuretf/simpletf successfully.
-Uploading 18 files from directory /opt/agent/_work/1/s/azuretf/simpletf.
+Processed 18 files from /opt/agent/_work/1/s/azuretf/monolithic_tf successfully.
+Uploading 18 files from directory /opt/agent/_work/1/s/azuretf/monolithic_tf.
 Uploaded 71,399,829 out of 303,696,955 bytes.
 ##[warning]Free memory is lower than 5%; Currently used: 99.73%
 ##[warning]Free memory is lower than 5%; Currently used: 100.00%
 ##[warning]Free memory is lower than 5%; Currently used: 100.00%
 ##[warning]Free memory is lower than 5%; Currently used: 100.00%
-Uploading 18 files from directory /opt/agent/_work/1/s/azuretf/simpletf.
+Uploading 18 files from directory /opt/agent/_work/1/s/azuretf/monolithic_tf.
 Uploaded 71,399,829 out of 303,696,955 bytes.
 ##[error]Exit code 137 returned from process: file name '/opt/agent/bin/Agent.PluginHost', arguments 'task "Agent.Plugins.PipelineArtifact.PublishPipelineArtifactTaskV1, Agent.Plugins"'.
 Finishing: PublishPipelineArtifact
@@ -5782,10 +5782,10 @@ Prevent memory + disk bloat across runs.
 run/use,
 ```
 - script: |
-    rm -rf azuretf/simpletf/.terraform
-    rm -f azuretf/simpletf/.terraform.lock.hcl
+    rm -rf azuretf/monolithic_tf/.terraform
+    rm -f azuretf/monolithic_tf/.terraform.lock.hcl
     rm -f *.tfstate*
-    rm -f azuretf/simpletf/tfplan.binary
+    rm -f azuretf/monolithic_tf/tfplan.binary
   condition: always()
   displayName: "Cleanup Terraform working directory/Pipeline cleanup"
 ```
@@ -6051,7 +6051,7 @@ Even invisible characters can break authentication.
 export TF_VAR_arm_client_secret="1J58Q~ux51JOtxxxx-GIrYF4vWdiUeHNdjd1mcQU"
 
 # 2. Test Terraform picks it up
-cd azuretf/simpletf
+cd azuretf/monolithic_tf
 terraform plan
 
 then, Verify locally 
@@ -7083,7 +7083,7 @@ PIPELINE CODE:
 #      inputs:
 #        provider: 'azurerm'
 #        command: 'init'
-#        workingDirectory: 'azuretf/simpletf' # since files in terraform-iac-automation/azuretf/simpletf/
+#        workingDirectory: 'azuretf/monolithic_tf' # since files in terraform-iac-automation/azuretf/monolithic_tf/
 #        backendServiceArm: '$(serviceConnection)'
 #        backendAzureRmResourceGroupName: 'myTFResourceGroup'
 #        backendAzureRmStorageAccountName: 'prodmyapptfstate01'
@@ -7097,7 +7097,7 @@ PIPELINE CODE:
 #      inputs:
 #        provider: 'azurerm'
 #        command: 'plan'
-#        workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
+#        workingDirectory: 'azuretf/monolithic_tf'   # since files in terraform-iac-automation/azuretf/monolithic_tf/
 #        environmentServiceNameAzureRM: '$(serviceConnection)'
 #        commandOptions: >
 #          -no-color                                           
@@ -7110,7 +7110,7 @@ PIPELINE CODE:
 #      inputs:
 #        provider: 'azurerm'
 #        command: 'apply'
-#        workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
+#        workingDirectory: 'azuretf/monolithic_tf'   # since files in terraform-iac-automation/azuretf/monolithic_tf/
 #        environmentServiceNameAzureRM: '$(serviceConnection)'
 #        commandOptions: >
 #          -no-color
@@ -7133,7 +7133,7 @@ PIPELINE CODE:
 #      inputs:
 #        provider: 'azurerm'
 #        command: 'init'
-#        workingDirectory: 'azuretf/simpletf' # since files in terraform-iac-automation/azuretf/simpletf/
+#        workingDirectory: 'azuretf/monolithic_tf' # since files in terraform-iac-automation/azuretf/monolithic_tf/
 #        backendServiceArm: '$(serviceConnection)'
 #        backendAzureRmResourceGroupName: 'myTFResourceGroup'
 #        backendAzureRmStorageAccountName: 'prodmyapptfstate01'
@@ -7145,14 +7145,14 @@ PIPELINE CODE:
 #      inputs:
 #        provider: 'azurerm'
 #        command: 'plan'
-#        workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
+#        workingDirectory: 'azuretf/monolithic_tf'   # since files in terraform-iac-automation/azuretf/monolithic_tf/
 #        environmentServiceNameAzureRM: '$(serviceConnection)'
 #        commandOptions: '-out=tfplan'
         
     # PUBLISH plan as artifact
 #    - task: PublishPipelineArtifact@1
 #      inputs:
-#        targetPath: 'azuretf/simpletf/tfplan'
+#        targetPath: 'azuretf/monolithic_tf/tfplan'
 #        artifact: 'tfplan'
 #        publishLocation: 'pipeline'
 
@@ -7177,7 +7177,7 @@ PIPELINE CODE:
 #            inputs:
 #              buildType: 'current'
 #              artifactName: 'tfplan'
-#              targetPath: 'azuretf/simpletf/'
+#              targetPath: 'azuretf/monolithic_tf/'
           
           # Add, format and use/continue locs with tasks for init and apply mentioned at end of file.  
                     
@@ -7223,7 +7223,7 @@ PIPELINE CODE:
 #      inputs:
 #        buildType: 'current'
 #        artifactName: 'tfplan'
-#        targetPath: 'azuretf/simpletf/'
+#        targetPath: 'azuretf/monolithic_tf/'
 
     # Add, format and use/continue locs with tasks for init and apply mentioned at end of file.
 
@@ -7233,7 +7233,7 @@ PIPELINE CODE:
 #            inputs:
 #              provider: 'azurerm'
 #              command: 'init'
-#              workingDirectory: 'azuretf/simpletf'  # since files in terraform-iac-automation/azuretf/simpletf/
+#              workingDirectory: 'azuretf/monolithic_tf'  # since files in terraform-iac-automation/azuretf/monolithic_tf/
 #              backendServiceArm: '$(serviceConnection)'
 #              backendAzureRmResourceGroupName: 'myTFResourceGroup'
 #              backendAzureRmStorageAccountName: 'prodmyapptfstate01'
@@ -7245,7 +7245,7 @@ PIPELINE CODE:
 #            inputs:
 #              provider: 'azurerm'
 #              command: 'apply'
-#              workingDirectory: 'azuretf/simpletf'   # since files in terraform-iac-automation/azuretf/simpletf/
+#              workingDirectory: 'azuretf/monolithic_tf'   # since files in terraform-iac-automation/azuretf/monolithic_tf/
 #              environmentServiceNameAzureRM: '$(serviceConnection)'
 #              commandOptions: 'tfplan'
 ---------------------------------------------------------------------------------------------------------------
