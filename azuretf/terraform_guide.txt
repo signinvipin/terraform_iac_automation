@@ -6981,7 +6981,7 @@ and export secrets to env and update to key vault
 Verify GitHub Token from EC2/VM:
 ```
 curl -i \
-  -H "Authorization: Bearer ghp_k7pt3nlRS6nYdQlZxxxjcSjJpL02CN1rCmwl" \
+  -H "Authorization: Bearer <git_token>" \
   -H "Accept: application/vnd.github+json" \
   https://api.github.com/user
 ```
