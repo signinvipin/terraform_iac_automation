@@ -559,7 +559,7 @@ variable "github_token" {
 
   default = ""
   # empty string allows env var to populate (takes variable from environment),
-  # export value as `export TF_VAR_github_token=ghp_k7pt3nlRS6xxxxZFaYjcSjJpL02CN1rCmwl`
+  # export value as `export TF_VAR_github_token=<git_token>`
 
   description = "GitHub token for Key Vault"
 
