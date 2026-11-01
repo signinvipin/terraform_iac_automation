@@ -796,7 +796,7 @@ resource "azurerm_public_ip" "prodmyapp_pub_ips" {
 output "vm_public_ip" {
   value = azurerm_public_ip.prodmyapp_pub_ips.ip_address
 }
-# Output "vm_public_ip" - "20.5.121.162"
+# Output "vm_public_ip" - "20.5.121.xxx"
 */
 
 /*
@@ -1174,7 +1174,7 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
 }
 */
 
-# to SSH login do - `ssh -i ~/.ssh/prodmyapp_vm1.pem adminuser@20.5.121.162`
+# to SSH login do - `ssh -i ~/.ssh/prodmyapp_vm1.pem adminuser@20.5.121.xxx`
 
 
 ## VM - Windows ##
@@ -1203,7 +1203,7 @@ resource "azurerm_public_ip" "prodmyapp_pub_ip_windows" {
 output "win_vm_public_ip" {
   value = azurerm_public_ip.prodmyapp_pub_ip_windows.ip_address
 }
-# 20.58.163.30 
+# 20.58.163.xx 
 */
 
 /*
