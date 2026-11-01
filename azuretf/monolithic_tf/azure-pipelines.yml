@@ -130,7 +130,7 @@ stages:
     # -----------------------------
     - script: |
         chmod +x runterraform.sh
-      workingDirectory: azuretf/simpletf
+      workingDirectory: azuretf/monolithic_tf
       displayName: "Make runterraform.sh executable"
     
     # -----------------------------
@@ -141,7 +141,7 @@ stages:
         pwd
         echo "FILES:"
         ls -la
-      workingDirectory: azuretf/simpletf
+      workingDirectory: azuretf/monolithic_tf
       displayName: "Debug directory"
         
     # -----------------------------
@@ -155,7 +155,7 @@ stages:
         echo "DEBUG: GITHUB_TOKEN length: ${#GITHUB_TOKEN}"
         echo "DEBUG: TF_VAR_windows_admin_password length: ${#TF_VAR_windows_admin_password}"
         #terraform version
-      workingDirectory: azuretf/simpletf
+      workingDirectory: azuretf/monolithic_tf
       displayName: "Debug Terraform Environment variables"
       env:
         ARM_CLIENT_ID: $(sp-client-id)
@@ -182,25 +182,25 @@ stages:
     # Terraform Validate/Lint
     # -----------------------------
     - script: terraform fmt -check -diff -recursive
-      workingDirectory: azuretf/simpletf
+      workingDirectory: azuretf/monolithic_tf
       displayName: "Terraform Format Troubleshoot"
       
     - script: terraform init -backend=false -no-color
-      workingDirectory: azuretf/simpletf
+      workingDirectory: azuretf/monolithic_tf
       displayName: "Terraform Init (Validation Only)"
 
     - script: terraform validate -no-color
-      workingDirectory: azuretf/simpletf
+      workingDirectory: azuretf/monolithic_tf
       displayName: "Terraform Validate"    
     
     # -----------------------------
     # Terraform Init
     # -----------------------------
     - script: |
-        #cd azuretf/simpletf
+        #cd azuretf/monolithic_tf
         ./runterraform.sh init
         #terraform init -upgrade
-      workingDirectory: azuretf/simpletf
+      workingDirectory: azuretf/monolithic_tf
       displayName: "Terraform Init"
       env:
         ARM_CLIENT_ID: $(sp-client-id)
@@ -226,10 +226,10 @@ stages:
     # Terraform Plan
     # -----------------------------
     - script: |
-        #cd azuretf/simpletf
+        #cd azuretf/monolithic_tf
         ./runterraform.sh plan
         #terraform plan -out=tfplan
-      workingDirectory: azuretf/simpletf
+      workingDirectory: azuretf/monolithic_tf
       displayName: "Terraform Plan"
       env:
        ARM_CLIENT_ID: $(sp-client-id)
@@ -247,10 +247,10 @@ stages:
     # Terraform Apply
     # -----------------------------
     - script: |
-        #cd azuretf/simpletf
+        #cd azuretf/monolithic_tf
         ./runterraform.sh apply
         #terraform apply -auto-approve tfplan
-      workingDirectory: azuretf/simpletf
+      workingDirectory: azuretf/monolithic_tf
       displayName: "Terraform Apply"
       env:
         ARM_CLIENT_ID: $(sp-client-id)
@@ -271,7 +271,7 @@ stages:
     - script: |
           chmod +x ./pushlogs.sh
           ./pushlogs.sh
-      workingDirectory: azuretf/simpletf
+      workingDirectory: azuretf/monolithic_tf
       displayName: "Commit Terraform Logs"
       condition: always()
       env:
@@ -296,11 +296,11 @@ stages:
     # Clean Terraform junk after every run
     # -----------------------------    
     - script: |
-        rm -rf azuretf/simpletf/.terraform
-        rm -f azuretf/simpletf/*.tfstate*
-        rm -f azuretf/simpletf/.terraform.lock.hcl
-        rm -f azuretf/simpletf/tfplan.binary
-        rm -f azuretf/simpletf/tfplan.recovery*
+        rm -rf azuretf/monolithic_tf/.terraform
+        rm -f azuretf/monolithic_tf/*.tfstate*
+        rm -f azuretf/monolithic_tf/.terraform.lock.hcl
+        rm -f azuretf/monolithic_tf/tfplan.binary
+        rm -f azuretf/monolithic_tf/tfplan.recovery*
         rm -rf .terraform-run-logs
       condition: always()
       displayName: "Cleanup Terraform workdir"

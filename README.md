@@ -3,7 +3,7 @@
 Infrastructure as code with Terraform: automated Azure resource provisioning, run through an Azure DevOps pipeline. This is a lab/learning project, currently being restructured into modules.
 
 ## Status
-- ✅ v1: single-file (non-modular) configuration in `azuretf/simpletf/`
+- ✅ v1: single-file (non-modular) configuration in `azuretf/monolithic_tf/`
 - 🚧 Next: split into a modular structure (providers, variables, reusable modules for networking, Key Vault, storage and VMs)
 
 ## What it provisions
@@ -17,7 +17,7 @@ Infrastructure as code with Terraform: automated Azure resource provisioning, ru
 
 ```text
 azuretf/
-├── simpletf/
+├── monolithic_tf/
 │   ├── main.tf               # providers, resources, variables, outputs (v1, single file)
 │   ├── provider.tf           # placeholder for the modular refactor
 │   ├── variables.tf          # placeholder for the modular refactor
@@ -36,7 +36,7 @@ azuretf/
 ## Usage
 
 ```bash
-cd azuretf/simpletf
+cd azuretf/monolithic_tf
 export ARM_SUBSCRIPTION_ID="<your-subscription-id>"
 terraform init
 terraform plan
